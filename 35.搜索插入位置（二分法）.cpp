@@ -1,0 +1,25 @@
+class Solution 
+{
+public:
+    int searchInsert(vector<int>& nums, int target) 
+    {
+        int n = nums.size();
+        int left = 0, right = n - 1, ans = n;
+        //ans初始值为n，若target为最大，直接加到数组末尾
+        while (left <= right) 
+        {
+            int mid = (left+right)/2;
+            if (target <= nums[mid]) 
+            {
+                ans=mid;
+                right = mid - 1;
+            } 
+            else 
+            {
+                left = mid + 1;
+            }
+        }
+        return ans;
+    }
+};
+//注意问题规模，用二分法
